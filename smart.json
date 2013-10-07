@@ -4,6 +4,6 @@
   "homepage": "https://github.com/davidworkman9/s3policy",
   "author": "Dave Workman <davidworkman9@gmail.com>",
   "version": "0.0.1",
-  "git": "s3policies",
+  "git": "https://github.com/davidworkman9/s3Policies.git",
   "packages": {}
 }
