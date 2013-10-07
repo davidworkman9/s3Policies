@@ -3,7 +3,7 @@
   "description": "Generate S3 upload and download policies",
   "homepage": "https://github.com/davidworkman9/s3policy",
   "author": "Dave Workman <davidworkman9@gmail.com>",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "git": "https://github.com/davidworkman9/s3Policies.git",
   "packages": {}
 }
