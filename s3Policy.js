@@ -1,5 +1,5 @@
 var crypto = Npm.require('crypto');
-s3Policies = function () {};
+ths.s3Policies = function () {};
 //s3Policies = function (accessKey, secretKey) {
 //
 //    if (!accessKey || !secretKey) {
