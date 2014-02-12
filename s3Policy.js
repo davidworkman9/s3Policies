@@ -33,14 +33,17 @@ s3Policies = function (accessKey, secretKey) {
         if (download) {
             url += '&response-content-disposition=attachment;filename=' + encodeURIComponent(download);
         }
-        if (cb) {
+        if (typeof cb === 'function')
             cb(null, url);
-        } else {
-            return url;
-        }
+        return url;
     };
 
-    this.writePolicy = function(key, bucket, duration, filesize, cb) {
+    this.writePolicy = function(key, bucket, duration, filesize, useEncryption, cb) {
+        if (typeof useEncryption === 'function') {
+            cb = useEncryption;
+            useEncryption = false;
+        }
+
         var dateObj = new Date;
         var dateExp = new Date(dateObj.getTime() + duration * 1000);
         var policy = {
@@ -54,6 +57,10 @@ s3Policies = function (accessKey, secretKey) {
             ]
         };
 
+        if(useEncryption) {
+            policy.conditions.push({ 'x-amz-server-side-encryption': 'AES256' });
+        }
+
         var policyString = JSON.stringify(policy);
         var policyBase64 = new Buffer(policyString).toString('base64');
         var signature = crypto.createHmac("sha1", this.secretKey).update(policyBase64);
@@ -63,11 +70,9 @@ s3Policies = function (accessKey, secretKey) {
             s3Signature:signature.digest("base64"),
             s3Key:accessKey
         };
-        if (cb) {
-            cb(s3Credentials);
-        } else {
-            return s3Credentials;
-        }
+        if (typeof cb === 'function')
+            cb(null, s3Credentials);
+        return s3Credentials;
     };
 }
 
