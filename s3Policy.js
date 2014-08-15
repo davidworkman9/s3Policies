@@ -7,10 +7,11 @@ s3Policies = function (accessKey, secretKey) {
     this.accessKey = accessKey;
     this.secretKey = secretKey;
 
-    this.readPolicy = function(key, bucket, duration, download, cb) {
+    this.readPolicy = function(key, bucket, duration, download, regionDomain, cb) {
         var dateObj = new Date;
         var expiration = new Date(dateObj.getTime() + duration * 1000);
         expiration = Math.round(expiration.getTime() / 1000);
+        regionDomain = regionDomain || 's3';
 
         var policy = 'GET\n\n\n' + expiration + '\n';
         policy += '/' + bucket + '/' + key;
@@ -23,7 +24,7 @@ s3Policies = function (accessKey, secretKey) {
 
         var signature = crypto.createHmac("sha1", this.secretKey).update(policy);
 
-        var url = 'https://s3.amazonaws.com/';
+        var url = 'https://'+regionDomain+'.amazonaws.com/';
         url += bucket + '/';
         url += key;
         url += '?AWSAccessKeyId=' + this.accessKey;
