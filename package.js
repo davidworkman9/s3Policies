@@ -1,5 +1,8 @@
 Package.describe({
-    summary: "Generate S3 upload and download policies"
+    summary: "Generate S3 upload and download policies",
+    version: "0.0.7",
+    name: "workman:s3Policies",
+    git: "https://github.com/davidworkman9/s3Policies.git"
 });
 
 Package.on_use(function (api) {
@@ -7,4 +10,8 @@ Package.on_use(function (api) {
     api.add_files([
         's3Policy.js'
     ], 'server');
+
+    if(api.versionsFrom) {
+        api.versionsFrom('METEOR@0.9.1');
+    }
 });
