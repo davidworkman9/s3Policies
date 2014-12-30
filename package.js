@@ -1,6 +1,6 @@
 Package.describe({
     summary: "Generate S3 upload and download policies",
-    version: "0.0.7",
+    version: "0.0.8",
     name: "mrt:s3policies",
     git: "https://github.com/davidworkman9/s3Policies.git"
 });
