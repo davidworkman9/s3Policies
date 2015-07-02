@@ -1,5 +1,5 @@
 var crypto = Npm.require('crypto');
-s3Policies = function (accessKey, secretKey) {
+S3Policies = s3Policies = function (accessKey, secretKey) {
     if (!accessKey || !secretKey) {
         console.log('Bad instantiation of s3policy! Go stand in the corner.\nDo the following:\nvar s3 = require(\'s3policy\')\nvar myBucket = new s3(\'ABCDEFG123456\', \'HFSFGA9S8H997786AS8545ASF90SDF0UA\')')
     }

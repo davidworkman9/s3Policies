@@ -10,7 +10,7 @@ As far as I can tell the original is abandoned and was left with a pretty seriou
 
 ```
 var MAXIMUM_MB = 10, SECONDS_BEFORE_TIMEOUT = 60;
-var s3 = new s3Policies('AWS_KEY', 'AES_SECRET_KEY');
+var s3 = new S3Policies('AWS_KEY', 'AES_SECRET_KEY');
 var policy = s3.writePolicy('LOCATION', 'BUCKET', SECONDS_BEFORE_TIMEOUT, MAXIMUM_MB);
 ```
 
@@ -18,7 +18,7 @@ var policy = s3.writePolicy('LOCATION', 'BUCKET', SECONDS_BEFORE_TIMEOUT, MAXIMU
 
 ```
 var SECONDS_BEFORE_TIMEOUT = 60;
-var s3 = new s3Policies('AWS_KEY', 'AES_SECRET_KEY');
+var s3 = new S3Policies('AWS_KEY', 'AES_SECRET_KEY');
 var url = s3.readPolicy('LOCATION', 'BUCKET', SECONDS_BEFORE_TIMEOUT, 'FORCE_FILENAME_(OPTIONAL)');
 ```
 
